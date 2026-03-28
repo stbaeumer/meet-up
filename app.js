@@ -36,7 +36,7 @@ const translations = {
     labelTimezone: 'Zeitzone',
     labelLocation: 'Ort',
     labelJoin: 'Link',
-    labelSequence: 'Sequence',
+    labelSequence: 'Version',
     iconTitle: '🏷️',
     iconDescription: '💬',
     iconDate: '📅',
@@ -87,7 +87,7 @@ const translations = {
     labelTimezone: 'Timezone',
     labelLocation: 'Location',
     labelJoin: 'Link',
-    labelSequence: 'Sequence',
+    labelSequence: 'Version',
     iconTitle: '🏷️',
     iconDescription: '💬',
     iconDate: '📅',
@@ -138,7 +138,7 @@ const translations = {
     labelTimezone: 'Tijdzone',
     labelLocation: 'Locatie',
     labelJoin: 'Link',
-    labelSequence: 'Sequence',
+    labelSequence: 'Versie',
     iconTitle: '🏷️',
     iconDescription: '💬',
     iconDate: '📅',
@@ -189,7 +189,7 @@ const translations = {
     labelTimezone: 'Fuseau horaire',
     labelLocation: 'Lieu',
     labelJoin: 'Lien',
-    labelSequence: 'Sequence',
+    labelSequence: 'Version',
     iconTitle: '🏷️',
     iconDescription: '💬',
     iconDate: '📅',
@@ -394,8 +394,8 @@ function collectFormValues(uid) {
   const offlineLocation = locationMode === 'offline' ? offlineLocationInput.value.trim() : '';
 
   let location = '';
-  if (locationMode === 'online') {
-    location = 'online';
+  if (locationMode === 'online' && server) {
+    location = server;
   }
   if (locationMode === 'offline' && offlineLocation) {
     location = offlineLocation;
@@ -446,7 +446,7 @@ function buildSharedMessage(values) {
     lines.push(copy.iconLink + ' ' + copy.labelJoin + ': ' + values.joinUrl);
   }
   if (Number.isFinite(values.sequence)) {
-    lines.push(copy.iconSequence + ' ' + copy.labelSequence + ': ' + String(values.sequence));
+    lines.push(copy.iconSequence + ' ' + copy.labelSequence + ': ' + String(values.sequence + 1));
   }
 
   return lines.join('\n');

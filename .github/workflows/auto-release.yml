@@ -24,6 +24,9 @@ jobs:
         run: |
           set -euo pipefail
 
+          build_dir="${GITHUB_WORKSPACE}/build"
+          mkdir -p "${build_dir}"
+
           git fetch --tags --force
 
           latest_patch="$(git tag --list | sed -nE 's/^v?0\.0\.([0-9]+)$/\1/p' | sort -n | tail -n1)"
@@ -79,7 +82,16 @@ jobs:
               --notes "Laden Sie die xdc herunter und laden Sie die dann als Datei in Ihren Chat hoch." \
               "${artifact}#meet-up.xdc"
 
+            cp "${artifact}" "${build_dir}/meet-up-${tag}.xdc"
+
             echo "Created release ${tag} for ${sha}."
 
             rm -rf "${workdir}" "${artifact}"
           done <<< "${commit_list}"
+
+      - name: Upload xdc build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: meet-up-xdc-builds
+          path: build/*.xdc
+          if-no-files-found: ignore

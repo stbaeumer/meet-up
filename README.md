@@ -34,8 +34,6 @@ Web form for creating a calendar event as an `.ics` file and sending it to a cha
 Current releases:
 `https://github.com/stbaeumer/meet-up/releases`
 
-Then share `meet-up.xdc` in your chat.
-
 ## Attribution
 
 Appointment icon source:
@@ -44,5 +42,3 @@ Appointment icon source:
 ## Shoutout
 
 Greatest respect to the developers of [Delta Chat](https://delta.chat/) for building an open, practical, and user-centered messaging platform that makes projects like this possible.
-
-
