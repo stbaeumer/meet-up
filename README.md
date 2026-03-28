@@ -4,13 +4,21 @@ Web form for creating a calendar event as an `.ics` file and sending it to a cha
 
 ## Features
 
-1. Switchable languages: Deutsch (de), English (en), Nederlands (nl), Français (fr). Default: English.
-2. Event fields: title, description, date, time, duration, timezone, and version.
-3. Location type: `offline` or `online`.
-4. For `online`: Jitsi server selection, optional custom server, room name, and generated meeting link.
-5. For `offline`: free text place input.
-6. Send the event to the chat with an attached `.ics` file via `webxdc.sendToChat()`.
-7. Live preview of the generated message text inside the form.
+### Switchable languages: Deutsch (de), English (en), Nederlands (nl), Français (fr). Default: English.
+
+
+
+### Event fields: title, description, date, time, duration, timezone, and version.
+
+
+### Location type: `offline` or `online`.
+
+
+#### For `online`: Jitsi server selection, optional custom server, room name, and generated meeting link.
+
+#### For `offline`: free text place input.
+
+### Live preview of the generated message text inside the form.
 
 ## Releases
 
