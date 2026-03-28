@@ -1,7 +1,7 @@
 const translations = {
   de: {
     pageTitle: 'Wir treffen uns',
-    pageSubtitle: 'Erstelle einen Termin als *.ics Kalenderdatei und schicke sie in einen Chat. Durch Download und Anklicken tragen Chat-Mitglieder den Termin im eigenen Kalender ein.',
+    pageSubtitle: 'Senden Sie eine ics-Kalenderdatei in einen Chat. Mitglieder können die Datei herunterladen und klicken, um den Termin im persönlichen Kalender einzutragen.',
     languageLabel: 'Sprache festlegen:',
     meetingTitleLabel: 'Titel:',
     descriptionLabel: 'Beschreibung:',
@@ -18,7 +18,7 @@ const translations = {
     offlineLocationPlaceholder: 'z. B. Raum123',
     timezoneLabel: 'Zeitzone:',
     sequenceLabel: 'SEQUENCE:',
-    sequenceHint: '0 = einmalig, bei Updates die Zahl hochzaehlen.',
+    sequenceOptions: ['einmalig', '1. Aktualisierung', '2. Aktualisierung', '3. Aktualisierung', '4. Aktualisierung', '5. Aktualisierung'],
     submitButton: 'In Chat senden',
     copyButton: 'Nachricht kopieren',
     copiedButton: 'Nachricht kopiert',
@@ -26,7 +26,7 @@ const translations = {
     outputHeading: 'Vorschau',
     footerLinkLabel: 'Projekt auf GitHub ansehen',
     customServerOption: 'Anderer Server',
-    hintLine: 'ℹ️ Hinweis: Klicken sie die Datei, um den unten beschriebenen Termin in den persoenlichen Kalender aufzunehmen.',
+    hintLine: 'ℹ️ Hinweis: Klicken Sie die Datei, um den unten beschriebenen Termin in den persönlichen Kalender aufzunehmen.',
     labelTitle: 'Titel',
     labelDescription: 'Beschreibung',
     labelDate: 'Datum',
@@ -36,10 +36,18 @@ const translations = {
     labelLocation: 'Ort',
     labelJoin: 'Link',
     labelSequence: 'Sequence',
-    lineIcon: '📌',
-    fallbackHint: 'webxdc ist hier nicht verfuegbar. Nachrichtentext wurde kopiert.',
+    iconTitle: '🏷️',
+    iconDescription: '💬',
+    iconDate: '📅',
+    iconTime: '⏰',
+    iconDuration: '⏳',
+    iconTimezone: '🌍',
+    iconLocation: '📍',
+    iconLink: '🔗',
+    iconSequence: '🔄',
+    fallbackHint: 'webxdc ist hier nicht verfügbar. Nachrichtentext wurde kopiert.',
     preparedHint: 'Der Chat-Entwurf wurde mit .ics-Datei vorbereitet.',
-    errorHint: 'Die Nachricht konnte nicht an den Chat uebergeben werden.'
+    errorHint: 'Die Nachricht konnte nicht an den Chat übergeben werden.'
   },
   en: {
     pageTitle: 'We are meeting',
@@ -60,7 +68,7 @@ const translations = {
     offlineLocationPlaceholder: 'e.g. Room123',
     timezoneLabel: 'Timezone:',
     sequenceLabel: 'SEQUENCE:',
-    sequenceHint: '0 = one-time, increase for updates.',
+    sequenceOptions: ['one-time', '1st update', '2nd update', '3rd update', '4th update', '5th update'],
     submitButton: 'Send to chat',
     copyButton: 'Copy message',
     copiedButton: 'Message copied',
@@ -78,7 +86,15 @@ const translations = {
     labelLocation: 'Location',
     labelJoin: 'Link',
     labelSequence: 'Sequence',
-    lineIcon: '📌',
+    iconTitle: '🏷️',
+    iconDescription: '💬',
+    iconDate: '📅',
+    iconTime: '⏰',
+    iconDuration: '⏳',
+    iconTimezone: '🌍',
+    iconLocation: '📍',
+    iconLink: '🔗',
+    iconSequence: '🔄',
     fallbackHint: 'webxdc is not available here. The message text was copied.',
     preparedHint: 'The chat draft was prepared with an .ics file.',
     errorHint: 'The message could not be handed over to the chat.'
@@ -102,7 +118,7 @@ const translations = {
     offlineLocationPlaceholder: 'bijv. Ruimte123',
     timezoneLabel: 'Tijdzone:',
     sequenceLabel: 'SEQUENCE:',
-    sequenceHint: '0 = eenmalig, verhoog bij updates.',
+    sequenceOptions: ['eenmalig', '1e update', '2e update', '3e update', '4e update', '5e update'],
     submitButton: 'Naar chat sturen',
     copyButton: 'Bericht kopieren',
     copiedButton: 'Bericht gekopieerd',
@@ -120,7 +136,15 @@ const translations = {
     labelLocation: 'Locatie',
     labelJoin: 'Link',
     labelSequence: 'Sequence',
-    lineIcon: '📌',
+    iconTitle: '🏷️',
+    iconDescription: '💬',
+    iconDate: '📅',
+    iconTime: '⏰',
+    iconDuration: '⏳',
+    iconTimezone: '🌍',
+    iconLocation: '📍',
+    iconLink: '🔗',
+    iconSequence: '🔄',
     fallbackHint: 'webxdc is hier niet beschikbaar. De berichttekst is gekopieerd.',
     preparedHint: 'Het chatconcept is voorbereid met een .ics-bestand.',
     errorHint: 'Het bericht kon niet aan de chat worden doorgegeven.'
@@ -144,7 +168,7 @@ const translations = {
     offlineLocationPlaceholder: 'ex. Salle123',
     timezoneLabel: 'Fuseau horaire :',
     sequenceLabel: 'SEQUENCE :',
-    sequenceHint: '0 = une seule fois, augmentez pour les mises a jour.',
+    sequenceOptions: ['une seule fois', '1ère mise à jour', '2e mise à jour', '3e mise à jour', '4e mise à jour', '5e mise à jour'],
     submitButton: 'Envoyer au chat',
     copyButton: 'Copier le message',
     copiedButton: 'Message copie',
@@ -162,7 +186,15 @@ const translations = {
     labelLocation: 'Lieu',
     labelJoin: 'Lien',
     labelSequence: 'Sequence',
-    lineIcon: '📌',
+    iconTitle: '🏷️',
+    iconDescription: '💬',
+    iconDate: '📅',
+    iconTime: '⏰',
+    iconDuration: '⏳',
+    iconTimezone: '🌍',
+    iconLocation: '📍',
+    iconLink: '🔗',
+    iconSequence: '🔄',
     fallbackHint: 'webxdc n est pas disponible ici. Le texte a ete copie.',
     preparedHint: 'Le brouillon de chat avec fichier .ics est pret.',
     errorHint: 'Le message n a pas pu etre transfere au chat.'
@@ -384,35 +416,34 @@ function collectFormValues(uid) {
 
 function buildSharedMessage(values) {
   const copy = translations[languageSelect.value] || translations.de;
-  const icon = copy.lineIcon;
   const lines = [copy.hintLine, ''];
 
   if (values.summary) {
-    lines.push(icon + ' ' + copy.labelTitle + ': ' + values.summary);
+    lines.push(copy.iconTitle + ' ' + copy.labelTitle + ': ' + values.summary);
   }
   if (values.description) {
-    lines.push(icon + ' ' + copy.labelDescription + ': ' + values.description);
+    lines.push(copy.iconDescription + ' ' + copy.labelDescription + ': ' + values.description);
   }
   if (values.dtstartDateText) {
-    lines.push(icon + ' ' + copy.labelDate + ': ' + values.dtstartDateText);
+    lines.push(copy.iconDate + ' ' + copy.labelDate + ': ' + values.dtstartDateText);
   }
   if (values.dtstartTimeText) {
-    lines.push(icon + ' ' + copy.labelTime + ': ' + values.dtstartTimeText);
+    lines.push(copy.iconTime + ' ' + copy.labelTime + ': ' + values.dtstartTimeText);
   }
   if (values.durationMinutes) {
-    lines.push(icon + ' ' + copy.labelDuration + ': ' + String(values.durationMinutes) + ' min');
+    lines.push(copy.iconDuration + ' ' + copy.labelDuration + ': ' + String(values.durationMinutes) + ' min');
   }
   if (values.tzid) {
-    lines.push(icon + ' ' + copy.labelTimezone + ': ' + values.tzid);
+    lines.push(copy.iconTimezone + ' ' + copy.labelTimezone + ': ' + values.tzid);
   }
   if (values.location) {
-    lines.push(icon + ' ' + copy.labelLocation + ': ' + values.location);
+    lines.push(copy.iconLocation + ' ' + copy.labelLocation + ': ' + values.location);
   }
   if (values.joinUrl) {
-    lines.push(icon + ' ' + copy.labelJoin + ': ' + values.joinUrl);
+    lines.push(copy.iconLink + ' ' + copy.labelJoin + ': ' + values.joinUrl);
   }
   if (Number.isFinite(values.sequence)) {
-    lines.push(icon + ' ' + copy.labelSequence + ': ' + String(values.sequence));
+    lines.push(copy.iconSequence + ' ' + copy.labelSequence + ': ' + String(values.sequence));
   }
 
   return lines.join('\n');
@@ -489,6 +520,18 @@ function localizePage(language) {
   }
 
   offlineLocationInput.placeholder = copy.offlineLocationPlaceholder;
+
+  if (copy.sequenceOptions) {
+    const currentVal = sequenceInput.value;
+    sequenceInput.innerHTML = '';
+    copy.sequenceOptions.forEach((label, idx) => {
+      const opt = document.createElement('option');
+      opt.value = String(idx);
+      opt.textContent = label;
+      sequenceInput.appendChild(opt);
+    });
+    sequenceInput.value = currentVal in copy.sequenceOptions ? currentVal : '0';
+  }
 
   if (!copyButton.dataset.copied) {
     copyButton.textContent = copy.copyButton;

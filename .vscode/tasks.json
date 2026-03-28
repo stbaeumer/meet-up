@@ -14,7 +14,7 @@
     {
       "label": "Build webxdc Package",
       "type": "shell",
-      "command": "zip -9 -r wir-treffen-uns.xdc . -x \".git/*\" \".github/*\" \".vscode/*\" \"webxdc.js\" \"*.xdc\"",
+      "command": "zip -9 -r meet-up.xdc . -x \".git/*\" \".github/*\" \".vscode/*\" \"webxdc.js\" \"*.xdc\"",
       "options": {
         "cwd": "${workspaceFolder}"
       },
