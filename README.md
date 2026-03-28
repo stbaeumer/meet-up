@@ -32,7 +32,7 @@ Web form for creating a calendar event as an `.ics` file and sending it to a cha
 ## Releases
 
 Current releases:
-`https://github.com/stbaeumer/meet-up/releases`
+`https://codeberg.org/stbaeumer/meet-up`
 
 ## Attribution
 
