@@ -251,7 +251,10 @@ function selectedServer() {
 
 function buildJoinUrl(server, room) {
   const trimmedServer = (server || '').trim();
-  const trimmedRoom = (room || '').trim().replace(/^\/+/, '');
+  const trimmedRoom = (room || '')
+    .trim()
+    .replace(/\s+/g, '_')
+    .replace(/^\/+/, '');
 
   if (!trimmedServer && !trimmedRoom) {
     return '';
@@ -394,8 +397,8 @@ function collectFormValues(uid) {
   const offlineLocation = locationMode === 'offline' ? offlineLocationInput.value.trim() : '';
 
   let location = '';
-  if (locationMode === 'online' && server) {
-    location = server;
+  if (locationMode === 'online') {
+    location = joinUrl;
   }
   if (locationMode === 'offline' && offlineLocation) {
     location = offlineLocation;
