@@ -111,7 +111,7 @@
             <img class="field-icon" src="icons/server.svg" alt="Anderer Server" onerror="this.classList.add('hidden')">
             <span id="customServerLabel">Anderen Server angeben:</span>
           </label>
-          <input id="customServer" name="customServer" type="url" inputmode="url" placeholder="https://example.org/meeting">
+          <input id="customServer" name="customServer" type="url" inputmode="url" placeholder="https://example.org/join">
         </div>
 
         <div class="field hidden" id="onlineRoomField">
@@ -149,22 +149,22 @@
             <img class="field-icon" src="icons/agenda.svg" alt="Sequence" onerror="this.classList.add('hidden')">
             <span id="sequenceLabel">SEQUENCE:</span>
           </label>
+          <div class="field-hint" id="sequenceHint">Bei einem Update die Versionsnummer erhöhen.</div>
           <select id="sequenceInput" name="sequenceInput">
-            <option value="0" selected>einmalig</option>
-            <option value="1">1. Aktualisierung</option>
-            <option value="2">2. Aktualisierung</option>
-            <option value="3">3. Aktualisierung</option>
-            <option value="4">4. Aktualisierung</option>
-            <option value="5">5. Aktualisierung</option>
+            <option value="0" selected>Version 1</option>
+            <option value="1">Version 2</option>
+            <option value="2">Version 3</option>
+            <option value="3">Version 4</option>
+            <option value="4">Version 5</option>
+            <option value="5">Version 6</option>
           </select>
         </div>
 
         <div class="actions">
           <div class="actions-grid">
             <button id="submitButton" class="primary-button" type="submit">In Chat senden</button>
-            <button id="copyButton" class="secondary-button" type="button">Nachricht kopieren</button>
           </div>
-          <div class="assistive" id="submitHint">Der erste Button erzeugt einen Chat-Entwurf mit .ics-Datei, der zweite kopiert den Nachrichtentext.</div>
+          <div class="assistive" id="submitHint">Der Button erzeugt einen Chat-Entwurf mit .ics-Datei.</div>
         </div>
 
         <div class="invitation-output">

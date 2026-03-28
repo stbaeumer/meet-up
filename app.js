@@ -17,12 +17,13 @@ const translations = {
     offlineLocationLabel: 'Ort angeben (offline):',
     offlineLocationPlaceholder: 'z. B. Raum123',
     timezoneLabel: 'Zeitzone:',
-    sequenceLabel: 'SEQUENCE:',
-    sequenceOptions: ['einmalig', '1. Aktualisierung', '2. Aktualisierung', '3. Aktualisierung', '4. Aktualisierung', '5. Aktualisierung'],
+    sequenceLabel: 'Version:',
+    sequenceHint: 'Bei einem Update die Versionsnummer erhöhen.',
+    sequenceOptions: ['Version 1', 'Version 2', 'Version 3', 'Version 4', 'Version 5', 'Version 6'],
     submitButton: 'In Chat senden',
     copyButton: 'Nachricht kopieren',
     copiedButton: 'Nachricht kopiert',
-    submitHint: 'Der erste Button erzeugt einen Chat-Entwurf mit .ics-Datei, der zweite kopiert den Nachrichtentext.',
+    submitHint: 'Der Button erzeugt einen Chat-Entwurf mit .ics-Datei.',
     outputHeading: 'Vorschau',
     footerLinkLabel: 'Projekt auf GitHub ansehen',
     customServerOption: 'Anderer Server',
@@ -50,7 +51,7 @@ const translations = {
     errorHint: 'Die Nachricht konnte nicht an den Chat übergeben werden.'
   },
   en: {
-    pageTitle: 'We are meeting',
+    pageTitle: 'meet up',
     pageSubtitle: 'Create an appointment as an *.ics calendar file and send it to a chat. By downloading and opening it, chat members can add the appointment to their own calendar.',
     languageLabel: 'Choose language:',
     meetingTitleLabel: 'Title:',
@@ -67,12 +68,13 @@ const translations = {
     offlineLocationLabel: 'Place (offline):',
     offlineLocationPlaceholder: 'e.g. Room123',
     timezoneLabel: 'Timezone:',
-    sequenceLabel: 'SEQUENCE:',
-    sequenceOptions: ['one-time', '1st update', '2nd update', '3rd update', '4th update', '5th update'],
+    sequenceLabel: 'Version:',
+    sequenceHint: 'Increase the version number when updating the appointment.',
+    sequenceOptions: ['Version 1', 'Version 2', 'Version 3', 'Version 4', 'Version 5', 'Version 6'],
     submitButton: 'Send to chat',
     copyButton: 'Copy message',
     copiedButton: 'Message copied',
-    submitHint: 'The first button prepares a chat draft with an .ics file, the second copies the message text.',
+    submitHint: 'The button prepares a chat draft with an .ics calendar file.',
     outputHeading: 'Preview',
     footerLinkLabel: 'View project on GitHub',
     customServerOption: 'Custom server',
@@ -117,12 +119,13 @@ const translations = {
     offlineLocationLabel: 'Plaats (offline):',
     offlineLocationPlaceholder: 'bijv. Ruimte123',
     timezoneLabel: 'Tijdzone:',
-    sequenceLabel: 'SEQUENCE:',
-    sequenceOptions: ['eenmalig', '1e update', '2e update', '3e update', '4e update', '5e update'],
+    sequenceLabel: 'Versie:',
+    sequenceHint: 'Verhoog het versienummer bij een update van de afspraak.',
+    sequenceOptions: ['Versie 1', 'Versie 2', 'Versie 3', 'Versie 4', 'Versie 5', 'Versie 6'],
     submitButton: 'Naar chat sturen',
     copyButton: 'Bericht kopieren',
     copiedButton: 'Bericht gekopieerd',
-    submitHint: 'De eerste knop maakt een chatconcept met een .ics-bestand, de tweede kopieert de berichttekst.',
+    submitHint: 'De knop maakt een chatconcept met een .ics-kalenderbestand.',
     outputHeading: 'Voorbeeld',
     footerLinkLabel: 'Bekijk project op GitHub',
     customServerOption: 'Aangepaste server',
@@ -167,12 +170,13 @@ const translations = {
     offlineLocationLabel: 'Lieu (offline) :',
     offlineLocationPlaceholder: 'ex. Salle123',
     timezoneLabel: 'Fuseau horaire :',
-    sequenceLabel: 'SEQUENCE :',
-    sequenceOptions: ['une seule fois', '1ère mise à jour', '2e mise à jour', '3e mise à jour', '4e mise à jour', '5e mise à jour'],
+    sequenceLabel: 'Version :',
+    sequenceHint: 'Augmentez le numéro de version lors d’une mise à jour du rendez-vous.',
+    sequenceOptions: ['Version 1', 'Version 2', 'Version 3', 'Version 4', 'Version 5', 'Version 6'],
     submitButton: 'Envoyer au chat',
     copyButton: 'Copier le message',
     copiedButton: 'Message copie',
-    submitHint: 'Le premier bouton prepare un brouillon avec fichier .ics, le second copie le texte.',
+    submitHint: 'Le bouton prepare un brouillon de chat avec un fichier .ics.',
     outputHeading: 'Apercu',
     footerLinkLabel: 'Voir le projet sur GitHub',
     customServerOption: 'Serveur personnalise',
@@ -232,7 +236,6 @@ const startTimeInput = document.getElementById('startTime');
 const durationInput = document.getElementById('durationMinutes');
 const timezoneSelect = document.getElementById('timezoneSelect');
 const sequenceInput = document.getElementById('sequenceInput');
-const copyButton = document.getElementById('copyButton');
 const submitButton = document.getElementById('submitButton');
 const submitHint = document.getElementById('submitHint');
 const invitationOutput = document.getElementById('invitationOutput');
@@ -533,10 +536,6 @@ function localizePage(language) {
     sequenceInput.value = currentVal in copy.sequenceOptions ? currentVal : '0';
   }
 
-  if (!copyButton.dataset.copied) {
-    copyButton.textContent = copy.copyButton;
-  }
-
   if (!submitHint.dataset.feedback) {
     submitHint.textContent = copy.submitHint;
     submitHint.classList.remove('is-success', 'is-error');
@@ -580,27 +579,6 @@ function updateDynamicVisibility() {
 function updatePreview() {
   const values = collectFormValues('wird-beim-senden-erzeugt@meet-up.webxdc');
   invitationOutput.textContent = buildSharedMessage(values);
-}
-
-async function copyInvitation() {
-  const copy = translations[languageSelect.value] || translations.de;
-  const values = collectFormValues(createUid());
-  const text = buildSharedMessage(values);
-
-  try {
-    await navigator.clipboard.writeText(text);
-    copyButton.dataset.copied = 'true';
-    copyButton.textContent = copy.copiedButton;
-    copyButton.classList.add('is-success');
-    window.setTimeout(() => {
-      const activeCopy = translations[languageSelect.value] || translations.de;
-      copyButton.dataset.copied = '';
-      copyButton.textContent = activeCopy.copyButton;
-      copyButton.classList.remove('is-success');
-    }, 1800);
-  } catch {
-    invitationOutput.textContent = text;
-  }
 }
 
 async function sendMessageToChat() {
@@ -649,8 +627,6 @@ serverSelect.addEventListener('change', () => {
   updateDynamicVisibility();
   updatePreview();
 });
-
-copyButton.addEventListener('click', copyInvitation);
 
 [
   meetingTitleInput,
