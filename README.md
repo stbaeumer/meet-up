@@ -40,3 +40,9 @@ Then share `meet-up.xdc` in your chat.
 
 Appointment icon source:
 `https://www.svgrepo.com/svg/442054/appointment-missed-symbolic`
+
+## Shoutout
+
+Greatest respect to the developers of [Delta Chat](https://delta.chat/) for building an open, practical, and user-centered messaging platform that makes projects like this possible.
+
+
