@@ -1,4 +1,189 @@
+const translations = {
+  de: {
+    pageTitle: 'Wir treffen uns',
+    pageSubtitle: 'Erstelle einen Termin als *.ics Kalenderdatei und schicke sie in einen Chat. Durch Download und Anklicken tragen Chat-Mitglieder den Termin im eigenen Kalender ein.',
+    languageLabel: 'Sprache festlegen:',
+    meetingTitleLabel: 'Titel:',
+    descriptionLabel: 'Beschreibung:',
+    startDateLabel: 'Datum:',
+    startTimeLabel: 'Uhrzeit:',
+    durationLabel: 'Dauer in Minuten:',
+    locationTypeLabel: 'Location:',
+    serverLabel: 'Jitsi-Auswahl:',
+    serverHint: 'Wird nur verwendet, wenn die Location auf online steht.',
+    customServerLabel: 'Anderen Server angeben:',
+    roomLabel: 'Raum angeben (online):',
+    roomHint: 'Hinweis: Der Raumname sollte so gewählt werden, dass er nicht erraten werden kann.',
+    offlineLocationLabel: 'Ort angeben (offline):',
+    offlineLocationPlaceholder: 'z. B. Raum123',
+    timezoneLabel: 'Zeitzone:',
+    sequenceLabel: 'SEQUENCE:',
+    sequenceHint: '0 = einmalig, bei Updates die Zahl hochzaehlen.',
+    submitButton: 'In Chat senden',
+    copyButton: 'Nachricht kopieren',
+    copiedButton: 'Nachricht kopiert',
+    submitHint: 'Der erste Button erzeugt einen Chat-Entwurf mit .ics-Datei, der zweite kopiert den Nachrichtentext.',
+    outputHeading: 'Vorschau',
+    footerLinkLabel: 'Projekt auf GitHub ansehen',
+    customServerOption: 'Anderer Server',
+    hintLine: 'ℹ️ Hinweis: Klicken sie die Datei, um den unten beschriebenen Termin in den persoenlichen Kalender aufzunehmen.',
+    labelTitle: 'Titel',
+    labelDescription: 'Beschreibung',
+    labelDate: 'Datum',
+    labelTime: 'Uhrzeit',
+    labelDuration: 'Dauer',
+    labelTimezone: 'Zeitzone',
+    labelLocation: 'Ort',
+    labelJoin: 'Link',
+    labelSequence: 'Sequence',
+    lineIcon: '📌',
+    fallbackHint: 'webxdc ist hier nicht verfuegbar. Nachrichtentext wurde kopiert.',
+    preparedHint: 'Der Chat-Entwurf wurde mit .ics-Datei vorbereitet.',
+    errorHint: 'Die Nachricht konnte nicht an den Chat uebergeben werden.'
+  },
+  en: {
+    pageTitle: 'We are meeting',
+    pageSubtitle: 'Create an appointment as an *.ics calendar file and send it to a chat. By downloading and opening it, chat members can add the appointment to their own calendar.',
+    languageLabel: 'Choose language:',
+    meetingTitleLabel: 'Title:',
+    descriptionLabel: 'Description:',
+    startDateLabel: 'Date:',
+    startTimeLabel: 'Time:',
+    durationLabel: 'Duration in minutes:',
+    locationTypeLabel: 'Location:',
+    serverLabel: 'Jitsi selection:',
+    serverHint: 'Only used when location is set to online.',
+    customServerLabel: 'Enter custom server:',
+    roomLabel: 'Room (online):',
+    roomHint: 'Hint: choose a room name that is hard to guess.',
+    offlineLocationLabel: 'Place (offline):',
+    offlineLocationPlaceholder: 'e.g. Room123',
+    timezoneLabel: 'Timezone:',
+    sequenceLabel: 'SEQUENCE:',
+    sequenceHint: '0 = one-time, increase for updates.',
+    submitButton: 'Send to chat',
+    copyButton: 'Copy message',
+    copiedButton: 'Message copied',
+    submitHint: 'The first button prepares a chat draft with an .ics file, the second copies the message text.',
+    outputHeading: 'Preview',
+    footerLinkLabel: 'View project on GitHub',
+    customServerOption: 'Custom server',
+    hintLine: 'ℹ️ Notice: Click the file to add the appointment described below to your personal calendar.',
+    labelTitle: 'Title',
+    labelDescription: 'Description',
+    labelDate: 'Date',
+    labelTime: 'Time',
+    labelDuration: 'Duration',
+    labelTimezone: 'Timezone',
+    labelLocation: 'Location',
+    labelJoin: 'Link',
+    labelSequence: 'Sequence',
+    lineIcon: '📌',
+    fallbackHint: 'webxdc is not available here. The message text was copied.',
+    preparedHint: 'The chat draft was prepared with an .ics file.',
+    errorHint: 'The message could not be handed over to the chat.'
+  },
+  nl: {
+    pageTitle: 'Wij ontmoeten elkaar',
+    pageSubtitle: 'Maak een afspraak als *.ics kalenderbestand en stuur dit naar een chat. Door te downloaden en te openen voegen chatleden de afspraak toe aan hun eigen kalender.',
+    languageLabel: 'Kies taal:',
+    meetingTitleLabel: 'Titel:',
+    descriptionLabel: 'Beschrijving:',
+    startDateLabel: 'Datum:',
+    startTimeLabel: 'Tijd:',
+    durationLabel: 'Duur in minuten:',
+    locationTypeLabel: 'Locatie:',
+    serverLabel: 'Jitsi-keuze:',
+    serverHint: 'Alleen gebruikt als locatie op online staat.',
+    customServerLabel: 'Aangepaste server invoeren:',
+    roomLabel: 'Ruimte (online):',
+    roomHint: 'Tip: kies een ruimtenaam die moeilijk te raden is.',
+    offlineLocationLabel: 'Plaats (offline):',
+    offlineLocationPlaceholder: 'bijv. Ruimte123',
+    timezoneLabel: 'Tijdzone:',
+    sequenceLabel: 'SEQUENCE:',
+    sequenceHint: '0 = eenmalig, verhoog bij updates.',
+    submitButton: 'Naar chat sturen',
+    copyButton: 'Bericht kopieren',
+    copiedButton: 'Bericht gekopieerd',
+    submitHint: 'De eerste knop maakt een chatconcept met een .ics-bestand, de tweede kopieert de berichttekst.',
+    outputHeading: 'Voorbeeld',
+    footerLinkLabel: 'Bekijk project op GitHub',
+    customServerOption: 'Aangepaste server',
+    hintLine: 'ℹ️ Let op: klik op het bestand om de hieronder beschreven afspraak aan je persoonlijke kalender toe te voegen.',
+    labelTitle: 'Titel',
+    labelDescription: 'Beschrijving',
+    labelDate: 'Datum',
+    labelTime: 'Tijd',
+    labelDuration: 'Duur',
+    labelTimezone: 'Tijdzone',
+    labelLocation: 'Locatie',
+    labelJoin: 'Link',
+    labelSequence: 'Sequence',
+    lineIcon: '📌',
+    fallbackHint: 'webxdc is hier niet beschikbaar. De berichttekst is gekopieerd.',
+    preparedHint: 'Het chatconcept is voorbereid met een .ics-bestand.',
+    errorHint: 'Het bericht kon niet aan de chat worden doorgegeven.'
+  },
+  fr: {
+    pageTitle: 'Nous nous retrouvons',
+    pageSubtitle: 'Creez un rendez-vous sous forme de fichier calendrier *.ics et envoyez-le dans un chat. En telechargeant et en ouvrant le fichier, les membres peuvent l ajouter a leur calendrier personnel.',
+    languageLabel: 'Choisir la langue :',
+    meetingTitleLabel: 'Titre :',
+    descriptionLabel: 'Description :',
+    startDateLabel: 'Date :',
+    startTimeLabel: 'Heure :',
+    durationLabel: 'Duree en minutes :',
+    locationTypeLabel: 'Lieu :',
+    serverLabel: 'Selection Jitsi :',
+    serverHint: 'Utilise uniquement si le lieu est online.',
+    customServerLabel: 'Saisir un serveur personnalise :',
+    roomLabel: 'Salle (online) :',
+    roomHint: 'Conseil : choisissez un nom de salle difficile a deviner.',
+    offlineLocationLabel: 'Lieu (offline) :',
+    offlineLocationPlaceholder: 'ex. Salle123',
+    timezoneLabel: 'Fuseau horaire :',
+    sequenceLabel: 'SEQUENCE :',
+    sequenceHint: '0 = une seule fois, augmentez pour les mises a jour.',
+    submitButton: 'Envoyer au chat',
+    copyButton: 'Copier le message',
+    copiedButton: 'Message copie',
+    submitHint: 'Le premier bouton prepare un brouillon avec fichier .ics, le second copie le texte.',
+    outputHeading: 'Apercu',
+    footerLinkLabel: 'Voir le projet sur GitHub',
+    customServerOption: 'Serveur personnalise',
+    hintLine: 'ℹ️ Info : cliquez sur le fichier pour ajouter le rendez-vous ci-dessous a votre calendrier personnel.',
+    labelTitle: 'Titre',
+    labelDescription: 'Description',
+    labelDate: 'Date',
+    labelTime: 'Heure',
+    labelDuration: 'Duree',
+    labelTimezone: 'Fuseau horaire',
+    labelLocation: 'Lieu',
+    labelJoin: 'Lien',
+    labelSequence: 'Sequence',
+    lineIcon: '📌',
+    fallbackHint: 'webxdc n est pas disponible ici. Le texte a ete copie.',
+    preparedHint: 'Le brouillon de chat avec fichier .ics est pret.',
+    errorHint: 'Le message n a pas pu etre transfere au chat.'
+  }
+};
+
+function localeForLanguage(language) {
+  if (language === 'de') {
+    return 'de-DE';
+  }
+  if (language === 'nl') {
+    return 'nl-NL';
+  }
+  if (language === 'fr') {
+    return 'fr-FR';
+  }
+  return 'en-GB';
+}
+
 const form = document.getElementById('inviteForm');
+const languageSelect = document.getElementById('language');
 const locationType = document.getElementById('locationType');
 const onlineFields = document.getElementById('onlineFields');
 const onlineRoomField = document.getElementById('onlineRoomField');
@@ -16,6 +201,7 @@ const durationInput = document.getElementById('durationMinutes');
 const timezoneSelect = document.getElementById('timezoneSelect');
 const sequenceInput = document.getElementById('sequenceInput');
 const copyButton = document.getElementById('copyButton');
+const submitButton = document.getElementById('submitButton');
 const submitHint = document.getElementById('submitHint');
 const invitationOutput = document.getElementById('invitationOutput');
 
@@ -35,11 +221,9 @@ function buildJoinUrl(server, room) {
   if (!trimmedServer && !trimmedRoom) {
     return '';
   }
-
   if (!trimmedServer) {
     return trimmedRoom;
   }
-
   if (!trimmedRoom) {
     return trimmedServer.replace(/\/+$/, '');
   }
@@ -75,6 +259,40 @@ function getDtStampUtc() {
   return new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}Z$/, 'Z');
 }
 
+function formatDateForMessage(dateValue, language) {
+  if (!dateValue) {
+    return '';
+  }
+
+  const parsed = new Date(dateValue + 'T00:00:00');
+  if (Number.isNaN(parsed.getTime())) {
+    return dateValue;
+  }
+
+  return new Intl.DateTimeFormat(localeForLanguage(language), { dateStyle: 'full' }).format(parsed);
+}
+
+function formatTimeForMessage(timeValue, language) {
+  if (!timeValue) {
+    return '';
+  }
+
+  const parts = timeValue.split(':');
+  if (parts.length < 2) {
+    return timeValue;
+  }
+
+  const date = new Date(Date.UTC(1970, 0, 1, Number(parts[0]), Number(parts[1])));
+  if (Number.isNaN(date.getTime())) {
+    return timeValue;
+  }
+
+  return new Intl.DateTimeFormat(localeForLanguage(language), {
+    timeStyle: 'short',
+    timeZone: 'UTC'
+  }).format(date);
+}
+
 function formatStartAsIcsLocal(dateValue, timeValue) {
   if (!dateValue || !timeValue) {
     return '';
@@ -86,13 +304,7 @@ function formatStartAsIcsLocal(dateValue, timeValue) {
     return '';
   }
 
-  const year = parts[0];
-  const month = parts[1];
-  const day = parts[2];
-  const hours = timeParts[0].padStart(2, '0');
-  const minutes = timeParts[1].padStart(2, '0');
-
-  return year + month + day + 'T' + hours + minutes + '00';
+  return parts[0] + parts[1] + parts[2] + 'T' + timeParts[0].padStart(2, '0') + timeParts[1].padStart(2, '0') + '00';
 }
 
 function durationMinutesToIso(minutes) {
@@ -134,6 +346,8 @@ function collectFormValues(uid) {
   const summary = meetingTitleInput.value.trim();
   const description = descriptionInput.value.trim();
   const dtstart = formatStartAsIcsLocal(startDateInput.value, startTimeInput.value);
+  const dtstartDateText = formatDateForMessage(startDateInput.value, languageSelect.value);
+  const dtstartTimeText = formatTimeForMessage(startTimeInput.value, languageSelect.value);
   const tzid = timezoneSelect.value;
   const durationMinutes = sanitizeDuration(durationInput.value);
   const duration = durationMinutesToIso(durationMinutes);
@@ -157,39 +371,49 @@ function collectFormValues(uid) {
     summary,
     description,
     dtstart,
+    dtstartDateText,
+    dtstartTimeText,
     tzid,
     duration,
+    durationMinutes,
     sequence,
-    locationMode,
     location,
     joinUrl
   };
 }
 
 function buildSharedMessage(values) {
-  const lines = ['Kalendereintrag (.ics):'];
+  const copy = translations[languageSelect.value] || translations.de;
+  const icon = copy.lineIcon;
+  const lines = [copy.hintLine, ''];
 
   if (values.summary) {
-    lines.push('SUMMARY: ' + values.summary);
+    lines.push(icon + ' ' + copy.labelTitle + ': ' + values.summary);
   }
   if (values.description) {
-    lines.push('DESCRIPTION: ' + values.description);
+    lines.push(icon + ' ' + copy.labelDescription + ': ' + values.description);
   }
-  if (values.dtstart) {
-    lines.push('DTSTART;TZID=' + values.tzid + ': ' + values.dtstart);
+  if (values.dtstartDateText) {
+    lines.push(icon + ' ' + copy.labelDate + ': ' + values.dtstartDateText);
   }
-  if (values.duration) {
-    lines.push('DURATION: ' + values.duration);
+  if (values.dtstartTimeText) {
+    lines.push(icon + ' ' + copy.labelTime + ': ' + values.dtstartTimeText);
+  }
+  if (values.durationMinutes) {
+    lines.push(icon + ' ' + copy.labelDuration + ': ' + String(values.durationMinutes) + ' min');
+  }
+  if (values.tzid) {
+    lines.push(icon + ' ' + copy.labelTimezone + ': ' + values.tzid);
   }
   if (values.location) {
-    lines.push('LOCATION: ' + values.location);
+    lines.push(icon + ' ' + copy.labelLocation + ': ' + values.location);
   }
   if (values.joinUrl) {
-    lines.push('URL: ' + values.joinUrl);
+    lines.push(icon + ' ' + copy.labelJoin + ': ' + values.joinUrl);
   }
-
-  lines.push('UID: ' + values.uid);
-  lines.push('SEQUENCE: ' + String(values.sequence));
+  if (Number.isFinite(values.sequence)) {
+    lines.push(icon + ' ' + copy.labelSequence + ': ' + String(values.sequence));
+  }
 
   return lines.join('\n');
 }
@@ -198,7 +422,7 @@ function buildIcsContent(values) {
   const lines = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//DeltaChat//Meet Up//DE',
+    'PRODID:-//DeltaChat//Wir treffen uns//DE',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     'BEGIN:VEVENT',
@@ -226,7 +450,8 @@ function buildIcsContent(values) {
     lines.push('URL:' + escapeIcsUrl(values.joinUrl));
   }
 
-  lines.push('END:VEVENT', 'END:VCALENDAR');
+  lines.push('END:VEVENT');
+  lines.push('END:VCALENDAR');
   return lines.join('\r\n') + '\r\n';
 }
 
@@ -245,6 +470,39 @@ function fileNameFromSummary(summary) {
   return cleaned + '.ics';
 }
 
+function localizePage(language) {
+  const copy = translations[language] || translations.de;
+
+  document.documentElement.lang = language;
+  document.title = copy.pageTitle;
+
+  Object.entries(copy).forEach(([key, value]) => {
+    const node = document.getElementById(key);
+    if (node) {
+      node.textContent = value;
+    }
+  });
+
+  const customOption = serverSelect.querySelector('option[value="custom"]');
+  if (customOption) {
+    customOption.textContent = copy.customServerOption;
+  }
+
+  offlineLocationInput.placeholder = copy.offlineLocationPlaceholder;
+
+  if (!copyButton.dataset.copied) {
+    copyButton.textContent = copy.copyButton;
+  }
+
+  if (!submitHint.dataset.feedback) {
+    submitHint.textContent = copy.submitHint;
+    submitHint.classList.remove('is-success', 'is-error');
+  }
+
+  submitButton.textContent = copy.submitButton;
+  updatePreview();
+}
+
 function showSubmitFeedback(message, state) {
   submitHint.dataset.feedback = 'true';
   submitHint.textContent = message;
@@ -253,14 +511,16 @@ function showSubmitFeedback(message, state) {
 
   window.clearTimeout(feedbackTimer);
   feedbackTimer = window.setTimeout(() => {
+    const copy = translations[languageSelect.value] || translations.de;
     submitHint.dataset.feedback = '';
-    submitHint.textContent = 'Der erste Button erzeugt einen Chat-Entwurf mit .ics-Datei, der zweite kopiert den Nachrichtentext.';
+    submitHint.textContent = copy.submitHint;
     submitHint.classList.remove('is-success', 'is-error');
   }, 2800);
 }
 
 function updateDynamicVisibility() {
   const isOnline = locationType.value === 'online';
+
   onlineFields.classList.toggle('hidden', !isOnline);
   onlineRoomField.classList.toggle('hidden', !isOnline);
   customServerField.classList.toggle('hidden', !isOnline || serverSelect.value !== 'custom');
@@ -280,15 +540,19 @@ function updatePreview() {
 }
 
 async function copyInvitation() {
+  const copy = translations[languageSelect.value] || translations.de;
   const values = collectFormValues(createUid());
   const text = buildSharedMessage(values);
 
   try {
     await navigator.clipboard.writeText(text);
-    copyButton.textContent = 'Nachricht kopiert';
+    copyButton.dataset.copied = 'true';
+    copyButton.textContent = copy.copiedButton;
     copyButton.classList.add('is-success');
     window.setTimeout(() => {
-      copyButton.textContent = 'Nachricht kopieren';
+      const activeCopy = translations[languageSelect.value] || translations.de;
+      copyButton.dataset.copied = '';
+      copyButton.textContent = activeCopy.copyButton;
       copyButton.classList.remove('is-success');
     }, 1800);
   } catch {
@@ -297,6 +561,7 @@ async function copyInvitation() {
 }
 
 async function sendMessageToChat() {
+  const copy = translations[languageSelect.value] || translations.de;
   const values = collectFormValues(createUid());
   const text = buildSharedMessage(values);
   const icsContent = buildIcsContent(values);
@@ -307,7 +572,7 @@ async function sendMessageToChat() {
     if (!window.webxdc || window.webxdc.__isFallback || typeof window.webxdc.sendToChat !== 'function') {
       await navigator.clipboard.writeText(text);
       invitationOutput.textContent = text;
-      showSubmitFeedback('webxdc ist hier nicht verfuegbar. Nachrichtentext wurde kopiert.', 'success');
+      showSubmitFeedback(copy.fallbackHint, 'success');
       return;
     }
 
@@ -320,13 +585,17 @@ async function sendMessageToChat() {
     });
 
     invitationOutput.textContent = text;
-    showSubmitFeedback('Der Chat-Entwurf wurde mit .ics-Datei vorbereitet.', 'success');
+    showSubmitFeedback(copy.preparedHint, 'success');
   } catch (error) {
     console.error(error);
     invitationOutput.textContent = text;
-    showSubmitFeedback('Die Nachricht konnte nicht an den Chat uebergeben werden.', 'error');
+    showSubmitFeedback(copy.errorHint, 'error');
   }
 }
+
+languageSelect.addEventListener('change', () => {
+  localizePage(languageSelect.value);
+});
 
 locationType.addEventListener('change', () => {
   updateDynamicVisibility();
@@ -362,4 +631,4 @@ form.addEventListener('submit', (event) => {
 });
 
 updateDynamicVisibility();
-updatePreview();
+localizePage(languageSelect.value);

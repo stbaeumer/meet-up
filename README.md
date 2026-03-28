@@ -1,62 +1,47 @@
-# Jitsi Invite for webxdc
+# Wir treffen uns (webxdc)
 
-## Title
-Jitsi Invite for webxdc
+Webformular zum Erstellen eines Kalendereintrags als `.ics`-Datei und Versand in einen Chat.
 
-## Goal
-Create and share meeting invites in Delta Chat (or another webxdc host) from a structured form.
+## Funktionen
 
-The app lets users:
-1. Fill in meeting details (title, description, date, time, duration, room, agenda).
-2. Preview the invitation in real time.
-3. Send the preview as a chat draft via `webxdc.sendToChat()`.
+1. Sprache umschaltbar: Deutsch, Englisch, Nederlands, Francais.
+2. Terminfelder: Titel, Beschreibung, Datum, Uhrzeit, Dauer, Zeitzone, Sequence.
+3. Location-Typ: `offline` oder `online`.
+4. Bei `online`: Jitsi-Serverauswahl, optional eigener Server, Raumname und Link-Erzeugung.
+5. Bei `offline`: freie Ortsangabe.
+6. Versand an den Chat mit angehaengter `.ics`-Datei via `webxdc.sendToChat()`.
+7. Live-Vorschau des Nachrichtentextes im Formular.
 
-## Images
-Create invitation
-<img width="864" height="1920" alt="create_invitation" src="https://github.com/user-attachments/assets/9e6ff2c9-7a74-4ea5-a715-62d6019c2bff" />
-Send to chat
-<img width="864" height="1920" alt="send_to_chat" src="https://github.com/user-attachments/assets/910eaf82-f07c-43eb-b0e6-d4c698da7a40" />
-Message 
-<img width="864" height="1920" alt="message" src="https://github.com/user-attachments/assets/f01742ec-e33c-490c-8670-ee39a57aca8d" />
+## Releases
 
+Aktuelle Releases:
+`https://github.com/stbaeumer/meet-up/releases`
 
+## Lokal starten
 
+1. VS Code Task `Start Wir treffen uns Preview` starten.
+2. Port `5000` im Browser oeffnen.
 
-Planned image slots:
-1. Form view
-2. Preview card
-3. Chat draft output in Delta Chat
-
-## Usage
-
-### Run locally (browser preview)
-1. Start the VS Code task `Start Jitsi Invite Preview`.
-2. Open the forwarded port URL (port `5000`).
-
-Alternative terminal command:
+Alternative:
 
 ```bash
 python3 -m http.server 5000
 ```
 
-Note:
-In normal browser preview, the webxdc API is not available. The app falls back to copying the message text.
+Hinweis:
+Im normalen Browser ist die `webxdc`-API nicht verfuegbar. Dann kopiert die App stattdessen den Nachrichtentext.
 
-### Build the `.xdc` package
-Use the VS Code task `Build webxdc Package` or run:
+## Build `.xdc`
+
+Per VS Code Task `Build webxdc Package` oder per Terminal:
 
 ```bash
-zip -9 -r delta-jitsi-invite.xdc . -x ".git/*" ".github/*" ".vscode/*" "webxdc.js" "*.xdc"
+zip -9 -r wir-treffen-uns.xdc . -x ".git/*" ".github/*" ".vscode/*" "webxdc.js" "*.xdc"
 ```
 
-Then share `delta-jitsi-invite.xdc` in your chat and start the app.
+Anschliessend `wir-treffen-uns.xdc` im Chat teilen.
 
-### Release automation
-On every push, GitHub Actions:
-1. Creates the next version tag (`0.0.1`, `0.0.2`, ...).
-2. Builds a fresh `.xdc` artifact from the pushed commit.
-3. Publishes a GitHub Release and attaches `delta-jitsi-invite.xdc`.
+## Attribution
 
-## Attributions
-
-App icon by [Fathor Rohman](https://icon-icons.com/icon/meeting-communications-conference-video-call/250229) via icon-icons.com.
+Appointment icon source:
+`https://www.svgrepo.com/svg/442054/appointment-missed-symbolic`

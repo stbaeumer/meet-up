@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Start Jitsi Invite Preview",
+      "label": "Start Wir treffen uns Preview",
       "type": "shell",
       "command": "python3 -m http.server 5000",
       "options": {
@@ -14,7 +14,7 @@
     {
       "label": "Build webxdc Package",
       "type": "shell",
-      "command": "zip -9 -r delta-jitsi-invite.xdc . -x \".git/*\" \".github/*\" \".vscode/*\" \"webxdc.js\" \"*.xdc\"",
+      "command": "zip -9 -r wir-treffen-uns.xdc . -x \".git/*\" \".github/*\" \".vscode/*\" \"webxdc.js\" \"*.xdc\"",
       "options": {
         "cwd": "${workspaceFolder}"
       },
