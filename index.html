@@ -14,26 +14,15 @@
       </div>
 
       <div class="title-block">
-        <h1 id="pageTitle">Jitsi-Einladung erstellen</h1>
+        <h1 id="pageTitle">Wir treffen uns</h1>
+        <p class="subtitle" id="pageSubtitle">Erstelle einen Termin als *.ics Kalenderdatei und schicke sie in einen Chat. Durch Download und Anklicken tragen Chat-Mitglieder den Termin im eigenen Kalender ein.</p>
       </div>
 
       <form id="inviteForm">
         <div class="field">
-          <label class="field-label" for="language">
-            <span id="languageLabel">Sprache festlegen:</span>
-          </label>
-          <select id="language" name="language">
-            <option value="de" selected>Deutsch</option>
-            <option value="en">English</option>
-            <option value="fr">Français</option>
-            <option value="nl">Nederlands</option>
-          </select>
-        </div>
-
-        <div class="field">
           <label class="field-label" for="meetingTitle">
             <img class="field-icon" src="icons/titel.svg" alt="Titel" onerror="this.classList.add('hidden')">
-            <span id="meetingTitleLabel">Titel des Meetings:</span>
+            <span id="meetingTitleLabel">Titel (SUMMARY):</span>
           </label>
           <input id="meetingTitle" name="meetingTitle" type="text" autocomplete="off">
         </div>
@@ -41,7 +30,7 @@
         <div class="field">
           <label class="field-label" for="description">
             <img class="field-icon" src="icons/beschreibung.svg" alt="Beschreibung" onerror="this.classList.add('hidden')">
-            <span id="descriptionLabel">Beschreibung:</span>
+            <span id="descriptionLabel">Beschreibung (DESCRIPTION):</span>
           </label>
           <textarea id="description" name="description"></textarea>
         </div>
@@ -50,7 +39,7 @@
           <div class="field">
             <label class="field-label" for="startDate">
               <img class="field-icon" src="icons/datumUhrzeit.svg" alt="Datum" onerror="this.classList.add('hidden')">
-              <span id="startDateLabel">Datum:</span>
+              <span id="startDateLabel">Datum (DTSTART):</span>
             </label>
             <input id="startDate" name="startDate" type="date">
           </div>
@@ -58,7 +47,7 @@
           <div class="field">
             <label class="field-label" for="startTime">
               <img class="field-icon" src="icons/datumUhrzeit.svg" alt="Uhrzeit" onerror="this.classList.add('hidden')">
-              <span id="startTimeLabel">Uhrzeit:</span>
+              <span id="startTimeLabel">Uhrzeit (DTSTART):</span>
             </label>
             <input id="startTime" name="startTime" type="time">
           </div>
@@ -67,15 +56,26 @@
         <div class="field">
           <label class="field-label" for="durationMinutes">
             <img class="field-icon" src="icons/dauer.svg" alt="Dauer" onerror="this.classList.add('hidden')">
-            <span id="durationLabel">Dauer in Minuten:</span>
+            <span id="durationLabel">Dauer in Minuten (DURATION):</span>
           </label>
           <input id="durationMinutes" name="durationMinutes" type="number" min="0" step="1" inputmode="numeric">
         </div>
 
         <div class="field">
+          <label class="field-label" for="locationType">
+            <img class="field-icon" src="icons/server.svg" alt="Location" onerror="this.classList.add('hidden')">
+            <span id="locationTypeLabel">Location:</span>
+          </label>
+          <select id="locationType" name="locationType">
+            <option value="offline" selected>offline</option>
+            <option value="online">online</option>
+          </select>
+        </div>
+
+        <div class="field hidden" id="onlineFields">
           <label class="field-label" for="serverSelect">
             <img class="field-icon" src="icons/server.svg" alt="Server" onerror="this.classList.add('hidden')">
-            <span id="serverLabel">Auswahl des Servers:</span>
+            <span id="serverLabel">Jitsi-Auswahl:</span>
           </label>
           <select id="serverSelect" name="serverSelect">
             <option value="https://meet.systemli.org">meet.systemli.org</option>
@@ -91,6 +91,7 @@
             <option value="https://sfu.mirotalk.com/join">https://sfu.mirotalk.com/join</option>
             <option value="custom">Anderer Server</option>
           </select>
+          <div class="field-hint" id="serverHint">Wird nur verwendet, wenn die Location auf online steht.</div>
         </div>
 
         <div class="field hidden" id="customServerField">
@@ -101,21 +102,43 @@
           <input id="customServer" name="customServer" type="url" inputmode="url" placeholder="https://example.org/meeting">
         </div>
 
-        <div class="field">
+        <div class="field hidden" id="onlineRoomField">
           <label class="field-label" for="roomName">
             <img class="field-icon" src="icons/raum.svg" alt="Raum" onerror="this.classList.add('hidden')">
-            <span id="roomLabel">Raum angeben:</span>
+            <span id="roomLabel">Raum angeben (online):</span>
           </label>
           <input id="roomName" name="roomName" type="text" autocomplete="off">
           <div class="field-hint" id="roomHint">Hinweis: Der Raumname sollte so gewählt werden, dass er nicht erraten werden kann.</div>
         </div>
 
-        <div class="field">
-          <label class="field-label" for="agenda">
-            <img class="field-icon" src="icons/agenda.svg" alt="Agenda" onerror="this.classList.add('hidden')">
-            <span id="agendaLabel">Agenda angeben:</span>
+        <div class="field" id="offlineLocationField">
+          <label class="field-label" for="offlineLocation">
+            <img class="field-icon" src="icons/agenda.svg" alt="Ort" onerror="this.classList.add('hidden')">
+            <span id="offlineLocationLabel">Ort angeben (offline):</span>
           </label>
-          <textarea id="agenda" name="agenda"></textarea>
+          <input id="offlineLocation" name="offlineLocation" type="text" autocomplete="off" placeholder="z. B. Jugendzentrum, Raum 2">
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="timezoneSelect">
+            <img class="field-icon" src="icons/datumUhrzeit.svg" alt="Zeitzone" onerror="this.classList.add('hidden')">
+            <span id="timezoneLabel">Zeitzone:</span>
+          </label>
+          <select id="timezoneSelect" name="timezoneSelect">
+            <option value="Europe/Berlin" selected>MEZ/MESZ (Europe/Berlin)</option>
+            <option value="UTC">UTC</option>
+            <option value="Europe/Zurich">Europe/Zurich</option>
+            <option value="Europe/Vienna">Europe/Vienna</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="sequenceInput">
+            <img class="field-icon" src="icons/agenda.svg" alt="Sequence" onerror="this.classList.add('hidden')">
+            <span id="sequenceLabel">SEQUENCE:</span>
+          </label>
+          <input id="sequenceInput" name="sequenceInput" type="number" min="0" step="1" value="0" inputmode="numeric">
+          <div class="field-hint" id="sequenceHint">0 = einmalig, bei Updates die Zahl hochzaehlen.</div>
         </div>
 
         <div class="actions">
@@ -123,7 +146,7 @@
             <button id="submitButton" class="primary-button" type="submit">In Chat senden</button>
             <button id="copyButton" class="secondary-button" type="button">Nachricht kopieren</button>
           </div>
-          <div class="assistive" id="submitHint">Der erste Button erzeugt einen Chat-Entwurf, der zweite kopiert denselben Text.</div>
+          <div class="assistive" id="submitHint">Der erste Button erzeugt einen Chat-Entwurf mit .ics-Datei, der zweite kopiert den Nachrichtentext.</div>
         </div>
 
         <div class="invitation-output">
@@ -134,7 +157,6 @@
 
       <footer class="site-footer">
         <a id="footerLinkLabel" href="https://github.com/stbaeumer/delta-jitsi-invite" target="_blank" rel="noreferrer noopener">Projekt auf GitHub ansehen</a>
-        <a id="footerServersLabel" href="https://vpntester.org/blog/kostenlose-jitsimeet-server-liste/" target="_blank" rel="noreferrer noopener">Liste kostenloser Jitsi-Server</a>
       </footer>
     </section>
   </div>
