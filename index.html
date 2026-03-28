@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jitsi-Einladung</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <section class="panel form-panel">
+      <div class="hero-icon-wrap">
+        <img class="hero-icon" src="icons/icon.svg" alt="Formularsymbol" onerror="this.classList.add('hidden')">
+      </div>
+
+      <div class="title-block">
+        <h1 id="pageTitle">Jitsi-Einladung erstellen</h1>
+      </div>
+
+      <form id="inviteForm">
+        <div class="field">
+          <label class="field-label" for="language">
+            <span id="languageLabel">Sprache festlegen:</span>
+          </label>
+          <select id="language" name="language">
+            <option value="de" selected>Deutsch</option>
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="nl">Nederlands</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="meetingTitle">
+            <img class="field-icon" src="icons/titel.svg" alt="Titel" onerror="this.classList.add('hidden')">
+            <span id="meetingTitleLabel">Titel des Meetings:</span>
+          </label>
+          <input id="meetingTitle" name="meetingTitle" type="text" autocomplete="off">
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="description">
+            <img class="field-icon" src="icons/beschreibung.svg" alt="Beschreibung" onerror="this.classList.add('hidden')">
+            <span id="descriptionLabel">Beschreibung:</span>
+          </label>
+          <textarea id="description" name="description"></textarea>
+        </div>
+
+        <div class="datetime-stack">
+          <div class="field">
+            <label class="field-label" for="startDate">
+              <img class="field-icon" src="icons/datumUhrzeit.svg" alt="Datum" onerror="this.classList.add('hidden')">
+              <span id="startDateLabel">Datum:</span>
+            </label>
+            <input id="startDate" name="startDate" type="date">
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="startTime">
+              <img class="field-icon" src="icons/datumUhrzeit.svg" alt="Uhrzeit" onerror="this.classList.add('hidden')">
+              <span id="startTimeLabel">Uhrzeit:</span>
+            </label>
+            <input id="startTime" name="startTime" type="time">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="durationMinutes">
+            <img class="field-icon" src="icons/dauer.svg" alt="Dauer" onerror="this.classList.add('hidden')">
+            <span id="durationLabel">Dauer in Minuten:</span>
+          </label>
+          <input id="durationMinutes" name="durationMinutes" type="number" min="0" step="1" inputmode="numeric">
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="serverSelect">
+            <img class="field-icon" src="icons/server.svg" alt="Server" onerror="this.classList.add('hidden')">
+            <span id="serverLabel">Auswahl des Servers:</span>
+          </label>
+          <select id="serverSelect" name="serverSelect">
+            <option value="https://meet.systemli.org">meet.systemli.org</option>
+            <option value="https://brie.fi/ng">https://brie.fi/ng</option>
+            <option value="https://chitchatter.im/private">https://chitchatter.im/private</option>
+            <option value="https://galene.org:8443/group/public-vp9">https://galene.org:8443/group/public-vp9</option>
+            <option value="https://jitsi.extinctionrebellion.de/">https://jitsi.extinctionrebellion.de/</option>
+            <option value="https://kmeet.infomaniak.com">https://kmeet.infomaniak.com</option>
+            <option value="https://meet.cloud1x.de/">https://meet.cloud1x.de/</option>
+            <option value="https://meet.ffmuc.net/">https://meet.ffmuc.net/</option>
+            <option value="https://mirotalk.up.railway.app/join">https://mirotalk.up.railway.app/join</option>
+            <option value="https://p2p.mirotalk.com/join">https://p2p.mirotalk.com/join</option>
+            <option value="https://sfu.mirotalk.com/join">https://sfu.mirotalk.com/join</option>
+            <option value="custom">Anderer Server</option>
+          </select>
+        </div>
+
+        <div class="field hidden" id="customServerField">
+          <label class="field-label" for="customServer">
+            <img class="field-icon" src="icons/server.svg" alt="Anderer Server" onerror="this.classList.add('hidden')">
+            <span id="customServerLabel">Anderen Server angeben:</span>
+          </label>
+          <input id="customServer" name="customServer" type="url" inputmode="url" placeholder="https://example.org/meeting">
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="roomName">
+            <img class="field-icon" src="icons/raum.svg" alt="Raum" onerror="this.classList.add('hidden')">
+            <span id="roomLabel">Raum angeben:</span>
+          </label>
+          <input id="roomName" name="roomName" type="text" autocomplete="off">
+          <div class="field-hint" id="roomHint">Hinweis: Der Raumname sollte so gewählt werden, dass er nicht erraten werden kann.</div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="agenda">
+            <img class="field-icon" src="icons/agenda.svg" alt="Agenda" onerror="this.classList.add('hidden')">
+            <span id="agendaLabel">Agenda angeben:</span>
+          </label>
+          <textarea id="agenda" name="agenda"></textarea>
+        </div>
+
+        <div class="actions">
+          <div class="actions-grid">
+            <button id="submitButton" class="primary-button" type="submit">In Chat senden</button>
+            <button id="copyButton" class="secondary-button" type="button">Nachricht kopieren</button>
+          </div>
+          <div class="assistive" id="submitHint">Der erste Button erzeugt einen Chat-Entwurf, der zweite kopiert denselben Text.</div>
+        </div>
+
+        <div class="invitation-output">
+          <p class="output-label" id="outputHeading">Nachrichtentext</p>
+          <pre class="output-text" id="invitationOutput"></pre>
+        </div>
+      </form>
+
+      <footer class="site-footer">
+        <a id="footerLinkLabel" href="https://github.com/stbaeumer/delta-jitsi-invite" target="_blank" rel="noreferrer noopener">Projekt auf GitHub ansehen</a>
+        <a id="footerServersLabel" href="https://vpntester.org/blog/kostenlose-jitsimeet-server-liste/" target="_blank" rel="noreferrer noopener">Liste kostenloser Jitsi-Server</a>
+      </footer>
+    </section>
+  </div>
+
+  <script src="webxdc.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

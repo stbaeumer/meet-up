@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Raum">
+  <rect width="64" height="64" rx="16" fill="#f2e8e2"/>
+  <path d="M20 18h20a6 6 0 0 1 6 6v22H20z" fill="#8b6148"/>
+  <path d="M20 18l-6 4v24l6-2" fill="#6f4d39"/>
+  <circle cx="39" cy="34" r="2.5" fill="#fff3df"/>
+</svg>

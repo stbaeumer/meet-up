@@ -1,0 +1,85 @@
+name: Auto Release On Push
+
+on:
+  push:
+    branches:
+      - "**"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create incremental releases
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          git fetch --tags --force
+
+          latest_patch="$(git tag --list | sed -nE 's/^v?0\.0\.([0-9]+)$/\1/p' | sort -n | tail -n1)"
+          if [[ -z "${latest_patch}" ]]; then
+            latest_patch=0
+          fi
+
+          before_sha="$(jq -r '.before' "$GITHUB_EVENT_PATH")"
+          after_sha="$(jq -r '.after' "$GITHUB_EVENT_PATH")"
+          zero_sha="0000000000000000000000000000000000000000"
+
+          if [[ "${before_sha}" == "${zero_sha}" ]]; then
+            commit_list="${after_sha}"
+          else
+            commit_list="$(git rev-list --reverse "${before_sha}..${after_sha}")"
+          fi
+
+          if [[ -z "${commit_list}" ]]; then
+            echo "No commits to process."
+            exit 0
+          fi
+
+          next_patch="${latest_patch}"
+
+          while IFS= read -r sha; do
+            [[ -z "${sha}" ]] && continue
+
+            if git tag --points-at "${sha}" | grep -Eq '^v?0\.0\.[0-9]+$'; then
+              echo "Commit ${sha} already has a 0.0.x tag. Skipping."
+              continue
+            fi
+
+            next_patch=$((next_patch + 1))
+            tag="0.0.${next_patch}"
+
+            while git rev-parse -q --verify "refs/tags/${tag}" >/dev/null; do
+              next_patch=$((next_patch + 1))
+              tag="0.0.${next_patch}"
+            done
+
+            workdir="$(mktemp -d)"
+            artifact="${RUNNER_TEMP}/delta-jitsi-invite-${tag}.xdc"
+
+            git archive "${sha}" | tar -x -C "${workdir}"
+            (
+              cd "${workdir}"
+              zip -9 -r "${artifact}" . -x ".git/*" ".github/*" ".vscode/*" "webxdc.js" "*.xdc"
+            )
+
+            gh release create "${tag}" \
+              --target "${sha}" \
+              --title "${tag}" \
+              --notes "Laden Sie die xdc herunter und laden Sie die dann als Datei in Ihren Chat hoch." \
+              "${artifact}#delta-jitsi-invite.xdc"
+
+            echo "Created release ${tag} for ${sha}."
+
+            rm -rf "${workdir}" "${artifact}"
+          done <<< "${commit_list}"

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Datum und Uhrzeit">
+  <rect width="64" height="64" rx="16" fill="#e7eef7"/>
+  <rect x="14" y="18" width="36" height="30" rx="8" fill="#ffffff" stroke="#4a627a" stroke-width="3"/>
+  <path d="M22 12v12M42 12v12M14 28h36" stroke="#4a627a" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="32" cy="38" r="7" fill="none" stroke="#4a627a" stroke-width="3"/>
+  <path d="M32 34v5l4 2" stroke="#4a627a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
