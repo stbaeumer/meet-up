@@ -65,7 +65,7 @@ jobs:
             done
 
             workdir="$(mktemp -d)"
-            artifact="${RUNNER_TEMP}/delta-jitsi-invite-${tag}.xdc"
+            artifact="${RUNNER_TEMP}/meet-up-${tag}.xdc"
 
             git archive "${sha}" | tar -x -C "${workdir}"
             (
@@ -77,7 +77,7 @@ jobs:
               --target "${sha}" \
               --title "${tag}" \
               --notes "Laden Sie die xdc herunter und laden Sie die dann als Datei in Ihren Chat hoch." \
-              "${artifact}#delta-jitsi-invite.xdc"
+              "${artifact}#meet-up.xdc"
 
             echo "Created release ${tag} for ${sha}."
 
